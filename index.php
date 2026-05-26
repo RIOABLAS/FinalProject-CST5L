@@ -23,13 +23,11 @@ if (isset($_SESSION['user_id'])) {
             <div class="col-md-8 col-lg-6 mx-auto">
                 <div class="text-center mb-5">
                     <h1 class="display-4 fw-bold text-primary">My Tasks</h1>
-                    <p class="text-muted fs-5">Organize your day with our simple To-Do List</p>
                 </div>
 
                 <div class="card shadow-lg border-0">
-                    <!-- Tab navigation -->
                     <div class="card-header bg-primary">
-                        <ul class="nav nav-tabs nav-fill card-header-tabs border-0" role="tablist">
+                        <ul class="nav border-0" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active text-white" data-bs-toggle="tab" href="#login" role="tab">
                                     Login
