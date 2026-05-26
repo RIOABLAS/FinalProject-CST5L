@@ -1,10 +1,11 @@
 <?php
 
 // Database credentials
-$db_host = "localhost";
+$db_host = "zephyr.proxy.rlwy.net";
+$db_port = "48650";
 $db_name = "todo_database";
-$db_user = "";
-$db_password = "";
+$db_user = "root";
+$db_password = "ofhUhlYxnWunfdjXkolZcqysMUYvbdTo";
 
 try {
     $conn = new PDO(
