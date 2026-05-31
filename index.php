@@ -6,6 +6,18 @@ if (isset($_SESSION['user_id'])) {
     header("Location: dashboard.php");
     exit;
 }
+
+// Get error and success messages
+$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
+$success = isset($_SESSION['success']) ? $_SESSION['success'] : null;
+
+// Clear session messages after retrieving them
+if (isset($_SESSION['errors'])) {
+    unset($_SESSION['errors']);
+}
+if (isset($_SESSION['success'])) {
+    unset($_SESSION['success']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +54,25 @@ if (isset($_SESSION['user_id'])) {
                     </div>
 
                     <div class="card-body p-5">
+                        <?php if ($success): ?>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Success!</strong> <?php echo htmlspecialchars($success); ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($errors)): ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Error!</strong>
+                                <ul class="mb-0">
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?php echo htmlspecialchars($error); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="login" role="tabpanel">
                                 <form method="POST" action="auth/login.php">
